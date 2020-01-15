@@ -2,6 +2,7 @@
 A resume generator
 
 ## 预览
+[查看PDF](./src/pdf/resume.pdf)
 ![截图](./screenshot/截图.png)
 
 ## 环境准备
