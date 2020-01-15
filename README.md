@@ -1,6 +1,9 @@
 # resume-generator
 A resume generator
 
+## 预览
+![截图](./screenshot/截图.png)
+
 ## 环境准备
 `Node.js >= 8.9.0`
 
