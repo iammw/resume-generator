@@ -1,0 +1,80 @@
+extends layout
+
+block header
+  section.info
+    .info-item.name= info.name
+    .info-item.status= info.status
+    .info-item.sub-text
+      span.location= info.location
+      span.intention= info.intention
+    .info-item.sub-text
+      span.sub-item
+        i.fas.fa-mobile-alt
+        span.phone= info.phone
+      span.sub-item
+        i.fas.fa-envelope
+        span.email
+          a(href="mailto:" + info.email)= info.email
+    .info-item.languages
+      each value in info.languages
+        span.language= value
+block content
+  section.section-item.experiences
+    .section-header
+      .section-title= "工作经历"
+      .section-headerline
+    .section-content
+      each experience in experiences
+        .section-subitem
+          .section-subitem-header
+            span.company-name= experience.company
+            span.range.sub-text= experience.range
+          .section-subitem-subheader.sub-text= experience.position
+          each project in experience.projects
+            .project-section
+              .project-name= project.name
+              ul.project-detail
+                each detail in project.details
+                  li.detail= detail
+  section.section-item.personal-projects
+    .section-header
+      .section-title= "个人项目"
+      .section-headerline
+    .section-content
+      each project in personalProjects
+        .project-section
+          .project-name= project.name
+          .project-desc= project.desc
+          .project-techs
+            each tech in project.techs
+              span.tech= tech
+  section.section-item.education
+    .section-header
+      .section-title= "教育经历"
+      .section-headerline
+    .section-content
+      each edu in education
+        .section-subitem
+          .section-subitem-header
+            span.school-name= edu.school
+            span.range.sub-text= edu.startTime + " ~ " + edu.endTime
+          .section-subitem-subheader.sub-text= edu.education + " - " + edu.major
+  section.section-item.others
+    .section-header
+      .section-title= "自我评价"
+      .section-headerline
+    .section-content
+      ul.supplements
+        each supplement in others.supplements
+          li.supplement= supplement
+  section.section-item.others
+    .section-header
+      .section-title= "其他链接"
+      .section-headerline
+    .section-content
+      ul.supplements
+        each socialLink in others.socialLinks
+          li.sociallink
+            i(class=socialLink.icon)
+            span.sociallink-text= socialLink.text
+            a(href=socialLink.url target="_blank" rel="noopener noreferrer")= socialLink.url

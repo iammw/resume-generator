@@ -1,0 +1,114 @@
+{
+  "info": {
+    "name": "程序猿/媛",
+    "status": "目前在职",
+    "location": "上海",
+    "intention": "前端 / 后端 / 全栈开发",
+    "phone": "182****1024",
+    "email": "yourname@gmail.com",
+    "languages": ["JavaScript", "Node.js", "Python", "Java", "React", "Vue"]
+  },
+  "experiences": [
+    {
+      "company": "公司名字",
+      "range": "2016-06 ~ 至今",
+      "position": "前端开发工程师",
+      "projects": [
+        {
+          "name": "项目名称",
+          "url": "",
+          "details": [
+            "这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述"
+          ]
+        },
+        {
+          "name": "项目名称",
+          "url": "",
+          "details": [
+            "这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述"
+          ]
+        },
+        {
+          "name": "项目名称",
+          "url": "",
+          "details": [
+            "这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述"
+          ]
+        },
+        {
+          "name": "项目名称",
+          "url": "",
+          "details": [
+            "这是一段描述",
+            "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述"
+          ]
+        }
+      ]
+    }
+  ],
+  "personalProjects": [
+    {
+      "name": "个人项目",
+      "url": "",
+      "details": [
+
+      ],
+      "desc": "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+      "techs": ["React", "Python", "Flask", "MySQL"]
+    },
+    {
+      "name": "个人项目",
+      "url": "",
+      "details": [
+
+      ],
+      "desc": "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+      "techs": ["Python", "Scrapy", "Scrapyd", "MongoDB"]
+    },
+    {
+      "name": "个人项目",
+      "url": "",
+      "details": [
+
+      ],
+      "desc": "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+      "techs": ["Pug", "Puppeteer","Gulp"]
+    }
+  ],
+  "education": [
+    {
+      "school": "南京一所大学",
+      "major": "软件工程",
+      "education": "本科",
+      "startTime": "2012-09",
+      "endTime": "2016-06"
+    }
+  ],
+  "others": {
+    "supplements": [
+      "这是一段描述这是一段描述这是一段描述这是一段描述",
+      "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+      "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
+      "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述"
+    ],
+    "socialLinks": [
+      {
+        "name": "blog",
+        "icon": "fas fa-globe-americas",
+        "url": "https://somelink",
+        "text": "个人博客"
+      },
+      {
+        "name": "github",
+        "icon": "fab fa-github",
+        "url": "https://somelink",
+        "text": "Github"
+      }
+    ]
+  }
+}

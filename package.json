@@ -1,0 +1,36 @@
+{
+  "name": "resume-generator",
+  "version": "1.0.0",
+  "description": "A resume generator",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp clean && gulp dev",
+    "dev": "gulp dev",
+    "pdf": "gulp pdf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iammw/resume-generator.git"
+  },
+  "keywords": [
+    "resume-generator"
+  ],
+  "author": "iammw",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-copy": "^4.0.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "puppeteer": "^2.0.0",
+    "rmfr": "^2.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/iammw/resume-generator/issues"
+  },
+  "homepage": "https://github.com/iammw/resume-generator#readme"
+}

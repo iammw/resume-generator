@@ -1,0 +1,60 @@
+@import "_include-media.scss";
+@import "./components/content.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, PingFangSC, Helvetica Neue, "微软雅黑", "Microsoft YaHei", sans-serif;
+  background: #f7f8f9;
+  -webkit-font-smoothing: antialiased;
+
+  @include media("print") {
+    background-color: #ffffff;
+  }
+}
+
+a {
+  color: teal;
+}
+
+.container {
+  margin: 50px auto;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .1);
+  background: #fff;
+
+  @include media(">=desktop") {
+    width: 800px;
+    padding: 30px 40px;
+  }
+
+  @include media(">=tablet", "<=desktop") {
+    width: 750px;
+  }
+
+  @include media("<=phone") {
+    margin: 0;
+    padding: 5px 0;
+    box-shadow: 0 0 0;
+  }
+
+  @include media("print") {
+    margin: 0;
+    box-shadow: 0 0 0;
+
+    div {
+      break-after: always;
+    }
+  }
+}
+
+::-webkit-scrollbar, :hover::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}
