@@ -55,6 +55,10 @@ gulp.task('set-pdf-port', () => {
   port = 9001
 })
 
+gulp.task('set-screenshot-port', () => {
+  port = 9002
+})
+
 gulp.task('webserver', () => {
   connect.server({
     root: './dist',
@@ -94,6 +98,32 @@ gulp.task('pdf', ['set-pdf-port', 'default', 'webserver'], async () => {
   })
 
   console.log('PDF已生成, 目录./src/pdf')
+  browser.close()
+
+  connect.serverClose()
+  process.exit(0)
+})
+
+gulp.task('screenshot', ['set-screenshot-port', 'default', 'webserver'], async () => {
+  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
+  const page = await browser.newPage()
+
+  // In the case of multiple pages in a single browser, each page can have its own viewport size.
+  await page.setViewport({
+    width: 1440,
+    height: 900
+  })
+
+  // networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
+  await page.goto('http://localhost:9002', {waitUntil: 'networkidle0'})
+
+  await page.screenshot({
+    path: './screenshot/screenshot.png',
+    fullPage: true,
+    omitBackground: true
+  })
+
+  console.log('截图已生成, 目录./screenshot')
   browser.close()
 
   connect.serverClose()
