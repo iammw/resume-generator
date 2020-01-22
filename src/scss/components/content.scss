@@ -141,15 +141,25 @@ section.personal-projects {
 
       .project-name {
         font-size: 1em;
-        line-height: 2em;
+        line-height: 1.5em;
         color: #495057;
       }
 
       .project-desc {
         margin: 5px 0 10px;
-        line-height: 1em;
+        line-height: 1.5em;
         font-size: 15px;
         color: #868e96;
+      }
+
+      .project-detail {
+        margin: -5px 0 5px 18px;
+        font-size: 14px;
+        color: #868e96;
+
+        .detail {
+          line-height: 2em;
+        }
       }
 
       .tech {

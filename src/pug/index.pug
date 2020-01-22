@@ -45,6 +45,10 @@ block content
         .project-section
           .project-name= project.name
           .project-desc= project.desc
+          if project.details.length
+            ul.project-detail
+              each detail in project.details
+                li.detail= detail
           .project-techs
             each tech in project.techs
               span.tech= tech
