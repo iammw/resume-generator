@@ -9,7 +9,7 @@ A resume generator
 ![截图](./screenshot/截图.png)
 
 ## 环境准备
-`Node.js >= 8.9.0`
+`Node.js >= 12.0`
 
 ## 安装
 ```

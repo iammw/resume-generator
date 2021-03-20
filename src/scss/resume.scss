@@ -1,5 +1,5 @@
 @import "_include-media.scss";
-@import "./components/content.scss";
+@import "./content.scss";
 
 * {
   box-sizing: border-box;
@@ -10,8 +10,18 @@ ul {
   padding: 0;
 }
 
+@font-face {
+  font-family: "PingFang SC";
+  src: url("../fonts/PingFang-SC-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Light.ttf");
+}
+
 html, body {
-  font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, PingFangSC, Helvetica Neue, "微软雅黑", "Microsoft YaHei", sans-serif;
+  font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, OpenSans, Helvetica Neue, "微软雅黑", "Microsoft YaHei", sans-serif;
   background: #f7f8f9;
   -webkit-font-smoothing: antialiased;
 

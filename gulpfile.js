@@ -1,88 +1,79 @@
-const gulp = require('gulp')
-const sass = require('gulp-sass')
-const pug = require('gulp-pug')
-const rmfr = require('rmfr')
-const fs = require('fs')
-const connect = require('gulp-connect')
-const puppeteer = require('puppeteer')
+const { src, dest, series, parallel, watch } = require('gulp');
+const sass = require('gulp-sass');
+const pug = require('gulp-pug');
+const rmfr = require('rmfr');
+const fs = require('fs');
+const connect = require('gulp-connect');
+const puppeteer = require('puppeteer');
 
-gulp.task('resume-sass', () => {
-  gulp
-    .src('src/scss/resume.scss')
+function src2dist(dir) {
+  return src(`./src/${dir}/*.*`).pipe(dest(`./dist/${dir}/`));
+}
+
+function cssTranspile() {
+  return src('src/scss/resume.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dist/css/'))
-    .pipe(connect.reload())
-})
+    .pipe(dest('dist/css/'))
+    .pipe(connect.reload());
+}
 
-gulp.task('sass:watch', () => {
-  gulp.watch('./src/scss/resume.scss', ['resume-sass'])
-  gulp.watch('./src/scss/components/*.scss', ['resume-sass'])
-})
+watch(['./src/scss/resume.scss', './src/scss/content.scss'], function (cb) {
+  series(cssTranspile)();
+  cb();
+});
 
-gulp.task('json2pug', () => {
+function pugTranspile() {
   const locals = JSON.parse(fs.readFileSync('./resume.json', 'utf-8'))
-  gulp
-    .src('./src/pug/index.pug')
+  return src('./src/pug/index.pug')
     .pipe(
       pug({
         locals
       })
     )
-    .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload())
-})
-
-gulp.task('json2pug:watch', () => {
-  gulp.watch('./resume.json', ['json2pug'])
-  gulp.watch('./src/pug/*.pug', ['json2pug'])
-})
-
-function src2dist(dir) {
-  return gulp.src(`./src/${dir}/*.*`).pipe(gulp.dest(`./dist/${dir}/`))
+    .pipe(dest('./dist/'))
+    .pipe(connect.reload());
 }
 
-gulp.task('copy', () => {
-  src2dist('pdf')
-})
+watch(['./resume.json', './src/pug/*.pug'], function(cb) {
+  series(pugTranspile)();
+  cb();
+});
 
-gulp.task('clean', () => {
-  rmfr('./dist/')
-})
+function copy(cb) {
+  src2dist('fonts');
+  src2dist('pdf');
+  cb();
+}
 
-let port = 9000
+function clean(cb) {
+  rmfr('./dist/');
+  cb();
+}
 
-gulp.task('set-pdf-port', () => {
-  port = 9001
-})
+let port = 10086;
 
-gulp.task('set-screenshot-port', () => {
-  port = 9002
-})
+// 避免打印时，同时运行开发服务报错
+function setPdfPort(cb) {
+  port = 10010;
+  cb();
+}
 
-gulp.task('webserver', () => {
-  connect.server({
-    root: './dist',
-    livereload: true,
-    port
-  })
-})
+async function generatePDF() {
+  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  const page = await browser.newPage();
 
-gulp.task('default', ['resume-sass', 'json2pug', 'copy'])
-
-gulp.task('dev', ['default', 'json2pug:watch', 'sass:watch', 'webserver'])
-
-gulp.task('pdf', ['set-pdf-port', 'default', 'webserver'], async () => {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
-  const page = await browser.newPage()
-
-  // In the case of multiple pages in a single browser, each page can have its own viewport size.
+  /**
+   * In the case of multiple pages in a single browser, each page can have its own viewport size.
+   */
   await page.setViewport({
     width: 1440,
     height: 900
-  })
+  });
 
-  // networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
-  await page.goto('http://localhost:9001', {waitUntil: 'networkidle0'})
+  /**
+   * networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
+   */
+  await page.goto('http://localhost:10010', {waitUntil: 'networkidle0'});
 
   await page.pdf({
     path: './src/pdf/resume.pdf',
@@ -95,37 +86,48 @@ gulp.task('pdf', ['set-pdf-port', 'default', 'webserver'], async () => {
       bottom: 30,
       left: 40
     }
-  })
+  });
 
-  console.log('PDF已生成, 目录./src/pdf')
-  browser.close()
+  console.log('PDF已生成, 目录./src/pdf');
+  await browser.close();
 
-  connect.serverClose()
-  process.exit(0)
-})
+  connect.serverClose();
+  process.exit(0);
+}
 
-gulp.task('screenshot', ['set-screenshot-port', 'default', 'webserver'], async () => {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
-  const page = await browser.newPage()
+function livereload(cb) {
+  connect.server({
+    root: './dist',
+    livereload: true,
+    port
+  });
+  cb();
+}
 
-  // In the case of multiple pages in a single browser, each page can have its own viewport size.
-  await page.setViewport({
-    width: 1440,
-    height: 900
-  })
+exports.default = series(
+  cssTranspile,
+  pugTranspile,
+  copy
+);
 
-  // networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
-  await page.goto('http://localhost:9002', {waitUntil: 'networkidle0'})
+exports.dev = series(
+  cssTranspile,
+  pugTranspile,
+  copy,
+  livereload
+);
 
-  await page.screenshot({
-    path: './screenshot/screenshot.png',
-    fullPage: true,
-    omitBackground: true
-  })
+exports.pdf = series(
+  parallel(
+    setPdfPort,
+    series(
+      cssTranspile,
+      pugTranspile,
+      copy,
+      livereload
+    )
+  ),
+  generatePDF
+);
 
-  console.log('截图已生成, 目录./screenshot')
-  browser.close()
-
-  connect.serverClose()
-  process.exit(0)
-})
+exports.clean = clean;

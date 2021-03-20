@@ -1,0 +1,262 @@
+section.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+
+  .info-item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 1.8em;
+    color: #212529;
+  }
+
+  .status {
+    height: 20px;
+    line-height: 14px;
+    padding: 3px 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #fff;
+    background: #212529;
+  }
+
+  .sub-text {
+    font-size: 14px;
+  }
+
+  .location, .sub-item:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  .fas {
+    margin-right: 5px;
+  }
+
+  .fas, .phone, .email {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .languages {
+    .language {
+      min-width: 20px;
+      height: 20px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin: 0 5px;
+      color: #fff;
+      background: #212529;
+      line-height: 14px;
+      font-size: 12px;
+    }
+  }
+}
+
+.section-item {
+  margin: 24px 0;
+}
+
+section.experiences {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+
+  .section-headerline {
+    flex: 1;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  .section-content {
+    .section-subitem-header {
+      display: flex;
+      align-items: center;
+
+      .company-name {
+        flex: 1;
+        font-size: 1.2em;
+        font-weight: 700;
+        line-height: 2em;
+        color: #212529;
+      }
+    }
+
+    .sub-text {
+      font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica Neue, sans-serif;
+      font-size: 1em;
+      color: #adb5bd;
+    }
+
+    .project-section {
+      margin: 15px 0;
+
+      .project-name {
+        font-size: 1em;
+        color: #495057;
+      }
+
+      .project-detail {
+        margin: 10px 0 0 18px;
+        font-size: 14px;
+        color: #868e96;
+
+        .detail {
+          line-height: 2em;
+        }
+      }
+    }
+  }
+}
+
+section.personal-projects {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+
+  .section-headerline {
+    flex: 1;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  .section-content {
+    .project-section {
+      margin: 15px 0;
+
+      .project-name {
+        font-size: 1em;
+        line-height: 1.5em;
+        color: #495057;
+      }
+
+      .project-desc {
+        margin: 5px 0 10px;
+        line-height: 1.5em;
+        font-size: 15px;
+        color: #868e96;
+      }
+
+      .project-detail {
+        margin: -5px 0 5px 18px;
+        font-size: 14px;
+        color: #868e96;
+
+        .detail {
+          line-height: 2em;
+        }
+      }
+
+      .tech {
+        min-width: 20px;
+        height: 20px;
+        // border: 1px solid #495057;
+        border-radius: 10px;
+        padding: 2px 6px;
+        margin-right: 10px;
+        line-height: 16px;
+        font-size: 12px;
+        // font-weight: 300;
+        background-color: #495057;
+        color: #fff;
+      }
+    }
+  }
+}
+
+section.education {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+
+  .section-headerline {
+    flex: 1;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  .section-subitem-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .school-name {
+    flex: 1;
+    font-weight: 700;
+    font-size: 1.2em;
+    line-height: 2em;
+    color: #212529;
+  }
+
+  .range.sub-text {
+    font-size: 1em;
+    color: #adb5bd;
+  }
+
+  .section-subitem-subheader.sub-text {
+    font-size: 1em;
+    color: #adb5bd;
+  }
+}
+
+section.others {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+
+  .section-headerline {
+    flex: 1;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  ul.supplements {
+    margin: 10px 0 0 18px;
+    font-size: 14px;
+    color: #868e96;
+  }
+
+  li.supplement, li.sociallink {
+    line-height: 2em;
+  }
+
+  li.sociallink {
+    .fas, .fab {
+      margin-right: 5px;
+    }
+  }
+
+  .sociallink-text {
+    margin-right: 8px;
+  }
+}
