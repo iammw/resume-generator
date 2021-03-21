@@ -1,3 +1,21 @@
+.techs-container {
+  margin: 10px 0;
+}
+
+.tech {
+  display: inline-block;
+  min-width: 20px;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 7px;
+  border: 1px solid #495057;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  color: #495057;
+  background-color: transparent;
+}
+
 section.info {
   display: flex;
   flex-direction: column;
@@ -42,15 +60,17 @@ section.info {
 
   .languages {
     .language {
+      font-family: OpenSans Light;
+      display: inline-block;
       min-width: 20px;
       height: 20px;
-      padding: 2px 6px;
+      line-height: 20px;
+      padding: 0 7px;
       border-radius: 10px;
       margin: 0 5px;
+      font-size: 12px;
       color: #fff;
       background: #212529;
-      line-height: 14px;
-      font-size: 12px;
     }
   }
 }
@@ -92,13 +112,13 @@ section.experiences {
     }
 
     .sub-text {
-      font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica Neue, sans-serif;
+      font-family: OpenSans, -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica Neue, sans-serif;
       font-size: 1em;
       color: #adb5bd;
     }
 
     .project-section {
-      margin: 15px 0;
+      margin: 20px 0;
 
       .project-name {
         font-size: 1em;
@@ -161,20 +181,6 @@ section.personal-projects {
         .detail {
           line-height: 2em;
         }
-      }
-
-      .tech {
-        min-width: 20px;
-        height: 20px;
-        // border: 1px solid #495057;
-        border-radius: 10px;
-        padding: 2px 6px;
-        margin-right: 10px;
-        line-height: 16px;
-        font-size: 12px;
-        // font-weight: 300;
-        background-color: #495057;
-        color: #fff;
       }
     }
   }

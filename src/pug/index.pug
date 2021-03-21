@@ -30,6 +30,9 @@ block content
             span.company-name= experience.company
             span.range.sub-text= experience.range
           .section-subitem-subheader.sub-text= experience.position
+          .techs-container
+            each tech in experience.techs
+                span.tech= tech
           each project in experience.projects
             .project-section
               .project-name= project.name
