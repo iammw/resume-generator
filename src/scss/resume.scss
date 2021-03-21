@@ -16,12 +16,17 @@ ul {
 }
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans Light";
   src: url("../fonts/OpenSans-Light.ttf");
 }
 
 html, body {
-  font-family: Open Sans, -apple-system, BlinkMacSystemFont, PingFang SC, OpenSans, Helvetica Neue, "微软雅黑", "Microsoft YaHei", sans-serif;
+  font-family: OpenSans, -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica Neue, "Microsoft YaHei", sans-serif;
   background: #f7f8f9;
   -webkit-font-smoothing: antialiased;
 

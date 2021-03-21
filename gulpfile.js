@@ -17,13 +17,10 @@ function cssTranspile() {
     .pipe(connect.reload());
 }
 
-watch(['./src/scss/resume.scss', './src/scss/content.scss'], function (cb) {
-  series(cssTranspile)();
-  cb();
-});
+watch(['./src/scss/resume.scss', './src/scss/content.scss'], series(cssTranspile));
 
 function pugTranspile() {
-  const locals = JSON.parse(fs.readFileSync('./resume.json', 'utf-8'))
+  const locals = JSON.parse(fs.readFileSync('./resume.json', 'utf-8'));
   return src('./src/pug/index.pug')
     .pipe(
       pug({
@@ -34,10 +31,7 @@ function pugTranspile() {
     .pipe(connect.reload());
 }
 
-watch(['./resume.json', './src/pug/*.pug'], function(cb) {
-  series(pugTranspile)();
-  cb();
-});
+watch(['./resume.json', './src/pug/*.pug'], series(pugTranspile));
 
 function copy(cb) {
   src2dist('fonts');

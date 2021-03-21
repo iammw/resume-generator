@@ -14,6 +14,7 @@
       "company": "公司名称",
       "range": "2018-05 ~ 至今",
       "position": "后端开发工程师",
+      "techs": ["Java", "MySQL", "Redis", "Spring Boot"],
       "projects": [
         {
           "name": "项目名称",
@@ -55,6 +56,7 @@
       "company": "公司名称",
       "range": "2016-06 ~ 2018-05",
       "position": "前端开发工程师",
+      "techs": ["React", "Vue.js", "TypeScript", "Node.js"],
       "projects": [
         {
           "name": "项目名称",
@@ -98,11 +100,9 @@
     {
       "name": "个人项目",
       "url": "",
-      "details": [
-
-      ],
+      "details": [],
       "desc": "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
-      "techs": ["Python", "Scrapy", "Scrapyd", "MongoDB"]
+      "techs": []
     },
     {
       "name": "个人项目",
@@ -112,7 +112,7 @@
         "这是一段描述这是一段描述"
       ],
       "desc": "这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述这是一段描述",
-      "techs": ["Pug", "Puppeteer","Gulp"]
+      "techs": ["Pug", "Puppeteer", "Gulp", "MySQL"]
     }
   ],
   "education": [
