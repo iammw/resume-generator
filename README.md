@@ -1,6 +1,10 @@
 # resume-generator
 A resume generator
 
+## 预览
+![预览图](./screenshot/预览图-1.png)
+![预览图](./screenshot/预览图-2.png)
+
 ## Get Started
 - 环境：`Node.js >= 12.0`
 - 运行`npm install --global gulp-cli`安装gulp命令行工具
