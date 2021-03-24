@@ -56,17 +56,11 @@ async function generatePDF() {
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
 
-  /**
-   * In the case of multiple pages in a single browser, each page can have its own viewport size.
-   */
   await page.setViewport({
     width: 1440,
     height: 900
   });
 
-  /**
-   * networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
-   */
   await page.goto('http://localhost:10010', {waitUntil: 'networkidle0'});
 
   await page.pdf({

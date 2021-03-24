@@ -6,7 +6,7 @@ A resume generator
 ![预览图](./screenshot/预览图-2.png)
 
 ## Get Started
-- 环境：`Node.js >= 12.0`
+- 环境`Node.js >= 12.0`
 - 运行`npm install --global gulp-cli`安装gulp命令行工具
 - 运行`npm install`安装依赖
 - 运行`gulp dev`本地预览
