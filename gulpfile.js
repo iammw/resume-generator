@@ -6,22 +6,27 @@ const fs = require('fs');
 const connect = require('gulp-connect');
 const puppeteer = require('puppeteer');
 
-function src2dist(dir) {
-  return src(`./src/${dir}/*.*`).pipe(dest(`./dist/${dir}/`));
+function src2dist(dir, destDir, recursion = false) {
+  destDir = destDir ? destDir : dir;
+  if (recursion) {
+    return src(`./src/${dir}/**/*`).pipe(dest(`./dist/${destDir}/`));
+  } else {
+    return src(`./src/${dir}/*.*`).pipe(dest(`./dist/${destDir}/`));
+  }
 }
 
 function cssTranspile() {
-  return src('src/scss/resume.scss')
+  return src('src/styles/scss/resume.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(dest('dist/css/'))
     .pipe(connect.reload());
 }
 
-watch(['./src/scss/resume.scss', './src/scss/content.scss'], series(cssTranspile));
+watch(['./src/styles/scss/resume.scss', './src/styles/scss/content.scss'], series(cssTranspile));
 
 function pugTranspile() {
   const locals = JSON.parse(fs.readFileSync('./resume.json', 'utf-8'));
-  return src('./src/pug/index.pug')
+  return src('./src/templates/index.pug')
     .pipe(
       pug({
         locals
@@ -31,11 +36,13 @@ function pugTranspile() {
     .pipe(connect.reload());
 }
 
-watch(['./resume.json', './src/pug/*.pug'], series(pugTranspile));
+watch(['./resume.json', './src/templates/*.pug'], series(pugTranspile));
 
 function copy(cb) {
   src2dist('fonts');
+  src2dist('icons', 'icons', true);
   src2dist('pdf');
+  src2dist('styles/css', 'css');
   cb();
 }
 
